@@ -42,3 +42,33 @@ export class Stack<T> {
     return this.top?.getValue();
   }
 }
+
+export class ArrayBasedStack<T> {
+  constructor(public stack: T[] = []) {
+    this.stack = stack;
+  }
+
+  isEmpty() {
+    return this.stack.length === 0;
+  }
+
+  push(value: T) {
+    this.stack.push(value);
+  }
+
+  pop() {
+    if (this.isEmpty()) {
+      throw new Error('Stack is empty');
+    }
+
+    this.stack.pop();
+  }
+
+  peek() {
+    if (this.isEmpty()) {
+      throw new Error('Stack is empty');
+    }
+
+    return this.stack[this.stack.length - 1];
+  }
+}
