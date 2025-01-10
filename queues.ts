@@ -47,3 +47,31 @@ export class Queue<T> {
     return this.rear?.getValue();
   }
 }
+
+export class ArrayBasedQueue<T> {
+  public queue: Array<T>;
+
+  constructor() {
+    this.queue = [];
+  }
+
+  isEmpty() {
+    return this.queue.length === 0;
+  }
+
+  enqueue(value: T) {
+    this.queue.push(value);
+  }
+
+  dequeue() {
+    if (this.isEmpty()) {
+      throw new Error('Queue is empty');
+    }
+
+    this.queue.shift();
+  }
+
+  peek() {
+    return this.queue[this.queue.length - 1];
+  }
+}
